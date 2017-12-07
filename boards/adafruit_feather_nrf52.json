@@ -1,0 +1,41 @@
+{
+  "build": {
+    "core": "nRF5",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DARDUINO_FEATHER52",
+    "f_cpu": "64000000L",
+    "mcu": "nrf52832",
+    "ldscript": "nrf52_xxaa.ld",
+    "variant": "feather52"
+  },
+  "connectivity": [
+    "bluetooth"
+  ],
+  "debug": {
+    "tools": {
+      "jlink": {
+        "server": {
+          "package": "tool-openocd",
+          "executable": "bin/openocd",
+          "arguments": [
+            "-f", "scripts/interface/jlink.cfg",
+            "-c", "transport select swd",
+            "-f", "scripts/target/nrf52_arduino.cfg"
+          ]
+        },
+        "onboard": true
+      }
+    }
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "Adafruit Bluefruit nRF52 Feather",
+  "upload": {
+    "maximum_ram_size": 65536,
+    "maximum_size": 524288,
+    "protocol": "jlink"
+  },
+  "url": "https://www.adafruit.com/product/3406",
+  "vendor": "Adafruit"
+}
