@@ -2,40 +2,39 @@
   "build": {
     "core": "nRF5",
     "cpu": "cortex-m4",
-    "extra_flags": "-DARDUINO_GENERIC",
+    "extra_flags": "-DARDUINO_STCT_NRF52_minidev",
     "f_cpu": "64000000L",
     "mcu": "nrf52832",
     "ldscript": "nrf52_xxaa.ld",
-    "variant": "Generic"
+    "variant": "Taida_Century_nRF52_minidev"
   },
   "connectivity": [
     "bluetooth"
   ],
   "debug": {
     "tools": {
-      "cmsis-dap": {
+      "jlink": {
         "server": {
           "package": "tool-openocd",
           "executable": "bin/openocd",
           "arguments": [
-            "-f", "scripts/interface/cmsis-dap.cfg",
+            "-f", "scripts/interface/jlink.cfg",
+            "-c", "transport select swd",
             "-f", "scripts/target/nrf52.cfg"
           ]
-        },
-        "onboard": true
+        }
       }
     }
   },
   "frameworks": [
-    "arduino",
-    "mbed"
+    "arduino"
   ],
-  "name": "Delta DFBM-NQ620",
+  "name": "Taida Century nRF52 mini board",
   "upload": {
     "maximum_ram_size": 65536,
     "maximum_size": 524288,
-    "upload_protocol": "cmsis-dap"
+    "protocol": "jlink"
   },
-  "url": "https://developer.mbed.org/platforms/Delta-DFBM-NQ620/",
-  "vendor": "Delta"
+  "url": "http://taida-century.com/en/index.asp",
+  "vendor": "Taida Century"
 }

@@ -2,24 +2,25 @@
   "build": {
     "core": "nRF5",
     "cpu": "cortex-m4",
-    "extra_flags": "-DARDUINO_GENERIC",
+    "extra_flags": "-DARDUINO_FEATHER52",
     "f_cpu": "64000000L",
     "mcu": "nrf52832",
     "ldscript": "nrf52_xxaa.ld",
-    "variant": "Generic"
+    "variant": "feather52"
   },
   "connectivity": [
     "bluetooth"
   ],
   "debug": {
     "tools": {
-      "cmsis-dap": {
+      "jlink": {
         "server": {
           "package": "tool-openocd",
           "executable": "bin/openocd",
           "arguments": [
-            "-f", "scripts/interface/cmsis-dap.cfg",
-            "-f", "scripts/target/nrf52.cfg"
+            "-f", "scripts/interface/jlink.cfg",
+            "-c", "transport select swd",
+            "-f", "scripts/target/nrf52_arduino.cfg"
           ]
         },
         "onboard": true
@@ -27,15 +28,14 @@
     }
   },
   "frameworks": [
-    "arduino",
-    "mbed"
+    "arduino"
   ],
-  "name": "Delta DFBM-NQ620",
+  "name": "Adafruit Bluefruit nRF52 Feather",
   "upload": {
     "maximum_ram_size": 65536,
     "maximum_size": 524288,
-    "upload_protocol": "cmsis-dap"
+    "protocol": "jlink"
   },
-  "url": "https://developer.mbed.org/platforms/Delta-DFBM-NQ620/",
-  "vendor": "Delta"
+  "url": "https://www.adafruit.com/product/3406",
+  "vendor": "Adafruit"
 }

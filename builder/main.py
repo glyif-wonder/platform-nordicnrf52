@@ -30,7 +30,7 @@ env.Replace(
     RANLIB="arm-none-eabi-ranlib",
     SIZETOOL="arm-none-eabi-size",
 
-    ARFLAGS=["rcs"],
+    ARFLAGS=["rc"],
 
     ASFLAGS=["-x", "assembler-with-cpp"],
 
@@ -47,10 +47,6 @@ env.Replace(
     CXXFLAGS=[
         "-fno-rtti",
         "-fno-exceptions"
-    ],
-
-    CPPDEFINES=[
-        ("F_CPU", "$BOARD_F_CPU")
     ],
 
     LINKFLAGS=[
@@ -154,10 +150,15 @@ AlwaysBuild(target_size)
 # Target: Upload by default .bin file
 #
 
-target_upload = env.Alias(
-    "upload", target_firm,
-    [env.VerboseAction(env.AutodetectUploadPort, "Looking for upload disk..."),
-     env.VerboseAction(env.UploadToDisk, "Uploading $SOURCE")])
+if env.subst("$PIOFRAMEWORK") == "arduino":
+    target_upload = env.Alias(
+        "upload", target_firm,
+        env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE"))
+else:
+    target_upload = env.Alias(
+        "upload", target_firm,
+        [env.VerboseAction(env.AutodetectUploadPort, "Looking for upload disk..."),
+         env.VerboseAction(env.UploadToDisk, "Uploading $SOURCE")])
 AlwaysBuild(target_upload)
 
 #

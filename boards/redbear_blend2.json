@@ -2,11 +2,11 @@
   "build": {
     "core": "nRF5",
     "cpu": "cortex-m4",
-    "extra_flags": "-DARDUINO_GENERIC",
+    "extra_flags": "-DARDUINO_RB_BLEND_2",
     "f_cpu": "64000000L",
     "mcu": "nrf52832",
     "ldscript": "nrf52_xxaa.ld",
-    "variant": "Generic"
+    "variant": "RedBear_Blend2"
   },
   "connectivity": [
     "bluetooth"
@@ -27,15 +27,14 @@
     }
   },
   "frameworks": [
-    "arduino",
-    "mbed"
+    "arduino"
   ],
-  "name": "Delta DFBM-NQ620",
+  "name": "RedBearLab Blend 2",
   "upload": {
     "maximum_ram_size": 65536,
     "maximum_size": 524288,
-    "upload_protocol": "cmsis-dap"
+    "protocol": "cmsis-dap"
   },
-  "url": "https://developer.mbed.org/platforms/Delta-DFBM-NQ620/",
-  "vendor": "Delta"
+  "url": "https://redbear.cc/product/ble/blend-2.html",
+  "vendor": "RedBearLab"
 }
